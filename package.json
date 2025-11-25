@@ -1,0 +1,33 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "Backend para test ToDo Firebase",
+	"license": "MIT",
+	"author": "Victor Utrera",
+	"type": "commonjs",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"build": "tsc",
+		"start": "build && ts-node dist/index.ts",
+		"start:dev": "ts-node-dev src/index.ts"
+	},
+	"dependencies": {
+		"dotenv": "^17.2.3",
+		"express": "^5.1.0",
+		"firebase": "^12.6.0",
+		"firebase-admin": "^13.6.0",
+		"typescript": "^5.9.3"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.5",
+		"@types/node": "^24.10.1",
+		"@typescript-eslint/eslint-plugin": "^8.48.0",
+		"@typescript-eslint/parser": "^8.48.0",
+		"eslint": "^9.39.1",
+		"jest": "^30.2.0",
+		"ts-jest": "^29.4.5",
+		"ts-node": "^10.9.2",
+		"ts-node-dev": "^2.0.0"
+	}
+}
