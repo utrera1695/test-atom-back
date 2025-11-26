@@ -5,6 +5,6 @@ import { authMiddleware } from "../../../../shared/midlewares/auth.middleware";
 const taskRouter = Router();
 const taskController = new TaskController();
 
-taskRouter.post("/tasks", authMiddleware, taskController.create);
+taskRouter.post("/tasks", (req, res) => taskController.create(req, res));
 
 export default taskRouter;

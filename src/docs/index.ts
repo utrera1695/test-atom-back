@@ -37,11 +37,6 @@ export const swaggerSpec = {
 					},
 				},
 			},
-			get: {
-				summary: "Obtener todas las tareas",
-				tags: ["Tareas"],
-				security: [{ bearerAuth: [] }],
-			},
 		},
 	},
 	components: {

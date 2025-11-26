@@ -1,6 +1,5 @@
 import * as dotenv from "dotenv";
 import { FirebaseOptions } from "firebase/app";
-import serviceAccount from "../../firebaseServiceAccount.json";
 
 dotenv.config();
 
@@ -15,9 +14,4 @@ export const firebaseConfig: FirebaseOptions = {
 };
 export const PORT = process.env.PORT || 3000;
 
-const fixedPrivateKey = serviceAccount.private_key.replace(/\\n/g, "\n");
-
-export const firebaseAdminSdkJson = {
-	...serviceAccount,
-	private_key: fixedPrivateKey,
-};
+export const firebaseAdminSdkJson = process.env.FIREBASE_SERVICE_ACCOUNT;
