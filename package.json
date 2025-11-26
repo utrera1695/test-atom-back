@@ -8,20 +8,30 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "jest",
+		"test:watch": "jest --watch",
 		"build": "tsc",
-		"start": "build && ts-node dist/index.ts",
-		"start:dev": "ts-node-dev src/index.ts"
+		"start": "npm run build && node dist/server.js",
+		"start:dev": "ts-node-dev --respawn --transpile-only src/server.ts"
 	},
 	"dependencies": {
+		"@scalar/api-reference": "^1.40.0",
+		"@scalar/express-api-reference": "^0.8.25",
+		"@types/uuid": "^10.0.0",
+		"cors": "^2.8.5",
 		"dotenv": "^17.2.3",
 		"express": "^5.1.0",
 		"firebase": "^12.6.0",
 		"firebase-admin": "^13.6.0",
-		"typescript": "^5.9.3"
+		"swagger-jsdoc": "^6.2.8",
+		"typescript": "^5.9.3",
+		"uuid": "^13.0.0"
 	},
 	"devDependencies": {
+		"@types/cors": "^2.8.19",
 		"@types/express": "^5.0.5",
+		"@types/jest": "^30.0.0",
 		"@types/node": "^24.10.1",
+		"@types/swagger-jsdoc": "^6.0.4",
 		"@typescript-eslint/eslint-plugin": "^8.48.0",
 		"@typescript-eslint/parser": "^8.48.0",
 		"eslint": "^9.39.1",
