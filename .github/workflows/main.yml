@@ -1,32 +1,38 @@
-name: Build and Deploy to Render
+name: Build & Deploy
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
-  build_and_deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 24
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build dist
         run: npm run build
 
-      - name: Package dist
-        run: tar -czf dist.tar.gz dist
+      - name: Commit dist folder
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add dist -f
+          git commit -m "Build dist (CI)" || echo "No changes to commit"
+          git push origin main
 
-      - name: Trigger deployment in Render
+      - name: Trigger Render deploy
         run: |
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
