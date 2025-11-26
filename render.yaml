@@ -6,7 +6,7 @@ services:
     plan: free
     buildCommand: "echo 'Build skipped (handled by GitHub Actions)'"
     startCommand: "node dist/server.js"
-    branch: main
+    branch: master
     autoDeploy: false # los deploy solo vienen desde GitHub
     envVars:
       - key: NODE_VERSION
