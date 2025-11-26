@@ -1,4 +1,5 @@
 node_modules
 firebaseServiceAccount.json
-
+dist
+dist/*/**.*
 .env
