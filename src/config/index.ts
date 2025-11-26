@@ -13,5 +13,6 @@ export const firebaseConfig: FirebaseOptions = {
 	measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 export const PORT = process.env.PORT || 3000;
+console.log(PORT);
 
 export const firebaseAdminSdkJson = process.env.FIREBASE_SERVICE_ACCOUNT;
