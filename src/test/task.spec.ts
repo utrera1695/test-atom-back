@@ -25,10 +25,6 @@ describe("Task Use Cases", () => {
 
 	it("should create a task", async () => {
 		const userId = "1";
-		const dto = {
-			title: "Test Task",
-			description: "Test Description",
-		};
 		const taskData = { title: "Test Task", description: "Test Description" };
 		const task = new Task(
 			"1",

@@ -1,8 +1,8 @@
 import { TaskDTO } from "../dto/task.dto";
 import { FirestoreTaskRepository } from "../../infrastructure/firebaseTask.repository";
 import { TaskRepository } from "../../domain/repositories/task.repository";
-import { TaskFactory } from "../../domain/factories/task.factory";
 import { Task } from "../../domain/entities/task.entity";
+import { TaskFactory } from "../../domain/factories/task.factory";
 
 export class CreateTaskUseCase {
 	private taskRepository: TaskRepository;

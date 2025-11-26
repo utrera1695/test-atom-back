@@ -4,6 +4,7 @@ import cors from "cors";
 import taskRouter from "./modules/tasks/interface/routes/task.routes";
 import { apiReference } from "@scalar/express-api-reference";
 import { swaggerSpec } from "./docs";
+import authRouter from "./modules/auth/interface/routes/auth.routes";
 
 const app = express();
 
@@ -23,5 +24,6 @@ if (process.env.NODE_ENV === "development")
 
 // Routes
 app.use("/api", taskRouter);
+app.use("/api", authRouter);
 
 export default app;

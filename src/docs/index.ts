@@ -1,5 +1,6 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import { Task, TaskDTO } from "./schemas/tasks.schemas";
+import { RegisterDTO } from "./schemas/auth.schemas";
 
 export const swaggerSpec = {
 	openapi: "3.0.0",
@@ -34,6 +35,20 @@ export const swaggerSpec = {
 					},
 					500: {
 						description: "Error interno del servidor",
+					},
+				},
+			},
+		},
+		"/auth/register": {
+			post: {
+				summary: "Registrar usuario",
+				tags: ["Auth"],
+				requestBody: {
+					content: { "application/json": { schema: RegisterDTO } },
+				},
+				responses: {
+					201: {
+						description: "Usuario creado",
 					},
 				},
 			},
