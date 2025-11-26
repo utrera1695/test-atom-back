@@ -14,5 +14,8 @@ export const firebaseConfig: FirebaseOptions = {
 };
 export const PORT = process.env.PORT || 3000;
 console.log(PORT);
+const firebaseAccoutService = process.env.FIREBASE_SERVICE_ACCOUNT;
 
-export const firebaseAdminSdkJson = process.env.FIREBASE_SERVICE_ACCOUNT;
+export const firebaseAdminSdkJson = firebaseAccoutService?.includes(".json")
+	? firebaseAccoutService
+	: JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "");
