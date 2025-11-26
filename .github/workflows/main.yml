@@ -2,8 +2,7 @@ name: Build and Deploy Docker to Render
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
 
 jobs:
   build-and-deploy:
@@ -12,12 +11,14 @@ jobs:
     steps:
       # Checkout del repo
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       # Setup Node.js
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 24
+          node-version: 20
 
       # Login en Docker registry (Docker Hub o GitHub Packages)
       - name: Login to Docker Hub
