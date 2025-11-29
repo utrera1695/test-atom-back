@@ -2,6 +2,10 @@
 
 Este es el backend para la prueba técnica de AtomChat. Proporciona la API para la autenticación de usuarios y la gestión de tareas estilo ToDo List, utilizando Firebase para la persistencia de datos y JWT para la autenticación.
 
+[live preview](https://test-atom-latest.onrender.com/docs)
+
+La api se encuentra desplegada en Render de forma gratuita. render apaga el servicio y lo enciende con la primera ejecucion
+
 ## Características
 
 - **Autenticación de Usuarios:** Registro e inicio de sesión.
