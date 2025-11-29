@@ -34,7 +34,7 @@ jobs:
 
       # Hacer build
       - name: Build backend
-        run: npm run ci && npm run build
+        run: npm ci && npm run build
 
       # Deploy en firebase
       - name: Deploy Functions
