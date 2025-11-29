@@ -10,8 +10,7 @@
 		"test:watch": "jest --watch",
 		"build": "esbuild src/server.ts --bundle --platform=node --minify --outdir=dist",
 		"start": "npm run build && node dist/server.js",
-		"start:dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-		"deployd:firebase": "firebase deploy --only functions"
+		"start:dev": "ts-node-dev --respawn --transpile-only src/server.ts"
 	},
 	"dependencies": {
 		"@scalar/api-reference": "^1.40.0",
