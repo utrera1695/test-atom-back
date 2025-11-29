@@ -4,19 +4,19 @@ import { TokenAdapter } from "../infrastructure/auth/token.adapter";
 declare global {
 	namespace Express {
 		interface Request {
-			user?: any;
+			token?: any;
 		}
 	}
 }
 
 const authAdapter = new TokenAdapter();
 
-export const authMiddleware = (
+export const refreshMiddleware = (
 	req: Request,
 	res: Response,
 	next: NextFunction
 ) => {
-	const authHeader = req.headers.authorization;
+	const authHeader = req.headers["X-Refresh-Token"] as string;
 
 	if (!authHeader || !authHeader.startsWith("Bearer ")) {
 		return res.status(401).json({ message: "Unauthorized" });
@@ -26,7 +26,7 @@ export const authMiddleware = (
 
 	try {
 		const decoded = authAdapter.verifyToken(token);
-		req.user = decoded?.user;
+		req.token = decoded?.token;
 		next();
 	} catch (error) {
 		return res.status(401).json({ message: "Unauthorized" });

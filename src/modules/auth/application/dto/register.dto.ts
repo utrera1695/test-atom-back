@@ -1,11 +1,11 @@
 export class RegisterDTO {
+	id: string;
 	email: string;
-	password: string;
-	displayName: string;
+	createdAt: Date;
 
-	constructor(email: string, password: string, displayName: string) {
+	constructor(id: string, email: string, createdAt: Date) {
+		this.id = id;
 		this.email = email;
-		this.password = password;
-		this.displayName = displayName;
+		this.createdAt = createdAt;
 	}
 }

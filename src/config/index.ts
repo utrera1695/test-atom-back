@@ -13,9 +13,11 @@ export const firebaseConfig: FirebaseOptions = {
 	measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 export const PORT = process.env.PORT || 3000;
-console.log(PORT);
 const firebaseAccoutService = process.env.FIREBASE_SERVICE_ACCOUNT;
 
 export const firebaseAdminSdkJson = firebaseAccoutService?.includes(".json")
 	? firebaseAccoutService
 	: JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || "");
+
+export const jwtSecret = process.env.JWT_SECRET || "secret";
+export const jwtExpiresIn = process.env.JWT_EXPIRES_IN || "1h";

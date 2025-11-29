@@ -1,4 +1,5 @@
 import { RegisterUserMockUseCase } from "../modules/auth/application/usecases/mock/registeruser.mock.usecase";
+import { User } from "../modules/auth/domain/entities/user.entity";
 import { AuthRepository } from "../modules/auth/domain/repositories/auth.repository";
 
 describe("Test auth", () => {
@@ -13,16 +14,11 @@ describe("Test auth", () => {
 	});
 
 	it("should register user", async () => {
-		const userData = {
-			email: "test@email.com",
-			password: "Pass123456*",
-			displayName: "Test User",
-		};
+		const userData = new User("1", "test@email.com", new Date());
 
 		authRepository.register = jest.fn().mockResolvedValue(userData);
 
 		const result = await registerUser.execute(userData);
-		console.log(result);
 		expect(result).toEqual(userData);
 	});
 });

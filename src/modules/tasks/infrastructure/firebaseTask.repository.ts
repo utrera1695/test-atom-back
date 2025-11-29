@@ -1,4 +1,4 @@
-import { Firestore } from "firebase-admin/firestore";
+import { Firestore, WriteResult } from "firebase-admin/firestore";
 import { Task } from "../domain/entities/task.entity";
 import { TaskRepository } from "../domain/repositories/task.repository";
 
@@ -40,8 +40,14 @@ export class FirestoreTaskRepository implements TaskRepository {
 		);
 	}
 
-	async edit(taskId: string, data: Partial<Task>): Promise<Task> {
+	async edit(
+		userId: string,
+		taskId: string,
+		data: Partial<Task>
+	): Promise<Task> {
 		await this.firestore
+			.collection("users")
+			.doc(userId)
 			.collection(this.collectionName)
 			.doc(taskId)
 			.update(data);
@@ -50,14 +56,23 @@ export class FirestoreTaskRepository implements TaskRepository {
 		return updated!;
 	}
 
-	async delete(taskId: string): Promise<void> {
-		await this.firestore.collection(this.collectionName).doc(taskId).delete();
+	async delete(userId: string, taskId: string): Promise<WriteResult> {
+		console.log(taskId);
+		const response = await this.firestore
+			.collection("users")
+			.doc(userId)
+			.collection(this.collectionName)
+			.doc(taskId)
+			.delete();
+		console.log(response);
+		return response;
 	}
 
-	async list(userId: string): Promise<Task[]> {
+	async list(userId: string, query: any): Promise<Task[]> {
 		const snapshot = await this.firestore
+			.collection("users")
+			.doc(userId)
 			.collection(this.collectionName)
-			.where("userId", "==", userId)
 			.orderBy("createdAt", "desc")
 			.get();
 		return snapshot.docs.map((doc) => doc.data() as Task);

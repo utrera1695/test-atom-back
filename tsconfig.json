@@ -9,7 +9,9 @@
 		"skipLibCheck": false,
 		"outDir": "dist",
 		"rootDir": "src",
-		"isolatedModules": true
+		"isolatedModules": true,
+		"allowUnusedLabels": false,
+		"noFallthroughCasesInSwitch": true
 	},
 	"include": ["src"]
 }
