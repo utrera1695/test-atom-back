@@ -28,8 +28,7 @@ jobs:
       - name: Authenticate to Firebase
         run: |
           echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" > $HOME/firebaseServiceAccount.json
-          firebase login:ci --token "$(jq -r '.token' $HOME/firebaseServiceAccount.json)" || true
-          firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
+          export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/firebaseServiceAccountjson"
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
 
@@ -40,3 +39,5 @@ jobs:
       # Deploy en firebase
       - name: Deploy Functions
         run: firebase deploy --only functions --project ${{ secrets.FIREBASE_PROJECT_ID }}
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/firebaseServiceAccount.json"
